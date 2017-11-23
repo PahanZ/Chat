@@ -1,0 +1,32 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+form {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 35%;
+    padding: 50px;
+    background: rgba(0, 0, 0, 0.45);
+}
+label {
+	padding: 15px;
+}
+textarea {
+	width: 75%;
+    height: 25vh;
+}
+button {
+	padding: 7px;
+    border-radius: 5px;
+    border: navajowhite;
+    cursor: pointer;
+    margin-top: 25px;
+}
+#output {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
