@@ -14,20 +14,19 @@ const addMessage = (mass, elem) => {
 
 
 if (state != null) {
-  for (let index = 0; index < state.length; index++) {
-    addMessage(state, index);
-  }
+  Array.prototype.forEach.call(state, (item, i) => {
+    addMessage(state, i);
+  });
 }
-
 
 submit.addEventListener('submit', (event) => {
   event.preventDefault();
   arr.push(message.value);
-  addMessage(arr, arr.length-1);
+  addMessage(arr, arr.length - 1);
   message.value = '';
   setTimeout(() => {
     arr.push('эмуляция ответа');
-    addMessage(arr, arr.length-1);
+    addMessage(arr, arr.length - 1);
     localStorage.setItem('key', arr);
   }, 1000);
   localStorage.setItem('key', arr);
