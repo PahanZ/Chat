@@ -1,33 +1,36 @@
 const output = document.getElementById('output');
 const message = document.getElementById('message');
 const submit = document.getElementById('form');
-const arr = [];
-let state = localStorage.getItem('key');
-state = state.split(',');
+const obj = {
+  name: 'user',
+  message: [],
+  date: new Date(),
+};
+const state = JSON.parse(localStorage.getItem('key'));
 
 
-const addMessage = (mass, elem) => {
+const addMessage = (arr, elem) => {
   const newDiv = document.createElement('div');
-  newDiv.innerHTML = mass[elem];
+  newDiv.innerHTML = arr[elem];
   output.appendChild(newDiv);
+  const str = JSON.stringify(obj);
+  localStorage.setItem('key', str);
 };
 
 
 if (state != null) {
-  Array.prototype.forEach.call(state, (item, i) => {
-    addMessage(state, i);
+  Array.prototype.forEach.call(state.message, (item, i) => {
+    addMessage(state.message, i);
   });
 }
 
 submit.addEventListener('submit', (event) => {
   event.preventDefault();
-  arr.push(message.value);
-  addMessage(arr, arr.length - 1);
+  obj.message.push(message.value);
+  addMessage(obj.message, obj.message.length - 1);
   message.value = '';
   setTimeout(() => {
-    arr.push('эмуляция ответа');
-    addMessage(arr, arr.length - 1);
-    localStorage.setItem('key', arr);
+    obj.message.push('эмуляция ответа');
+    addMessage(obj.message, obj.message.length - 1);
   }, 1000);
-  localStorage.setItem('key', arr);
 });
