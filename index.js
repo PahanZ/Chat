@@ -5,7 +5,11 @@ const obj = {
   name: 'user',
   message: [],
   date: new Date(),
+  showDate() {
+    return `${this.date.getHours()}:${this.date.getMinutes()}:${this.date.getSeconds()}`;
+  },
 };
+
 const state = JSON.parse(localStorage.getItem('key'));
 
 
@@ -15,6 +19,7 @@ const addMessage = (arr, elem) => {
   output.appendChild(newDiv);
   const str = JSON.stringify(obj);
   localStorage.setItem('key', str);
+  console.log(obj.showDate());
 };
 
 
