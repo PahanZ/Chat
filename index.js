@@ -2,14 +2,14 @@ const output = document.getElementById('output');
 const message = document.getElementById('message');
 const submit = document.getElementById('form');
 const usersMessage = [];
-const obj = {
-  name: 'user',
-  message: '',
-  date: new Date(),
-  showDate() {
-    return `${this.date.getHours()}:${this.date.getMinutes()}:${this.date.getSeconds()}`;
-  },
-};
+// const obj = {
+//   name: 'user',
+//   message: '',
+//   date: new Date(),
+//   showDate() {
+//     return `${this.date.getHours()}:${this.date.getMinutes()}:${this.date.getSeconds()}`;
+//   },
+// };
 const serv = {
   name: 'server',
   message: 'эмуляция ответа',
@@ -42,11 +42,19 @@ if (state != null) {
 
 submit.addEventListener('submit', (event) => {
   event.preventDefault();
-  obj.message = message.value;
-  usersMessage.push(obj);
+  const user = {
+    name: 'user',
+    message: message.value,
+    date: new Date(),
+    showDate() {
+      return `${this.date.getHours()}:${this.date.getMinutes()}:${this.date.getSeconds()}`;
+    },
+  };
+  usersMessage.push(user);
   setLocalStorage();
-  showMessage(obj.message);
+  showMessage(user.message);
   message.value = '';
+  console.log(usersMessage);
   setTimeout(() => {
     showMessage(serv.message);
     usersMessage.push(serv);
