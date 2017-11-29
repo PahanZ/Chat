@@ -12,7 +12,7 @@ const obj = {
 };
 const serv = {
   name: 'server',
-  message: '',
+  message: 'эмуляция ответа',
   date: new Date(),
   showDate() {
     return `${this.date.getHours()}:${this.date.getMinutes()}:${this.date.getSeconds()}`;
@@ -21,10 +21,14 @@ const serv = {
 
 const state = JSON.parse(localStorage.getItem('usersMessage'));
 
-const addMessage = (sms) => {
+const showMessage = (sms) => {
   const newDiv = document.createElement('div');
   newDiv.innerHTML = sms;
   output.appendChild(newDiv);
+};
+
+
+const setLocalStorage = () => {
   const str = JSON.stringify(usersMessage);
   localStorage.setItem('usersMessage', str);
 };
@@ -32,19 +36,21 @@ const addMessage = (sms) => {
 
 if (state != null) {
   Array.prototype.forEach.call(state, (item) => {
-    addMessage(item.message);
+    showMessage(item.message);
   });
 }
 
 submit.addEventListener('submit', (event) => {
   event.preventDefault();
   obj.message = message.value;
-  addMessage(obj.message);
   usersMessage.push(obj);
+  setLocalStorage();
+  showMessage(obj.message);
   message.value = '';
   setTimeout(() => {
-    serv.message = 'эмуляция ответа';
-    addMessage(serv.message);
+    showMessage(serv.message);
     usersMessage.push(serv);
+    setLocalStorage();
   }, 1000);
 });
+
