@@ -14,7 +14,7 @@ const getLocalStorage = () => {
 getLocalStorage();
 
 
-const users = {
+const users = { // зачем отдельно хранить еще один объект с объектами, если есть просто массив с объектами, из которого можно вытянуть всю инфу
   1: {
     id: 1,
     userName: 'user',
@@ -66,7 +66,7 @@ const setLocalStorage = (object) => {
 
 if (usersMessages != null) {
   for (const key in users) {
-    if (Object.prototype.hasOwnProperty.call(users, key)) {
+    if (Object.prototype.hasOwnProperty.call(users, key)) { // че сделать с этим косяком и с циклом  for in
       appendMessage(users[key].userName);
     }
   }
@@ -79,8 +79,8 @@ if (usersMessages != null) {
 submit.addEventListener('submit', (event) => {
   event.preventDefault();
   getDate();
-  setLocalStorage(createObj('1', textarea.value));
-  appendMessage(users[usersMessages[usersMessages.length - 1].id].userName);
+  setLocalStorage(createObj('1', textarea.value)); // как добавить свойство не указываю его(т.е. добавить объект в объект просто)
+  appendMessage(users[usersMessages[usersMessages.length - 1].id].userName); // зачем отображать имя пользователя ,если нам нужны сообщени/
   textarea.value = '';
   setTimeout(() => {
     getDate();
