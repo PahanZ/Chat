@@ -9,7 +9,6 @@ const createObj = (id, message) => ({
   message,
 });
 
-
 const getDate = () => {
   const date = new Date();
   let hours = date.getHours();
@@ -33,13 +32,11 @@ const appendMessage = (sms) => {
   output.appendChild(newDiv);
 };
 
-
 const setLocalStorage = (object) => {
   usersMessages.push(object);
   const str = JSON.stringify(usersMessages);
   localStorage.setItem('usersMessages', str);
 };
-
 
 if (state != null) {
   Array.prototype.forEach.call(state, (item) => {
@@ -59,4 +56,3 @@ submit.addEventListener('submit', (event) => {
     appendMessage(usersMessages[usersMessages.length - 1].message);
   }, 1000);
 });
-
