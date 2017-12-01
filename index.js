@@ -1,13 +1,36 @@
 const output = document.getElementById('output');
 const textarea = document.getElementById('message');
 const submit = document.getElementById('form');
-const usersMessages = [];
-const state = JSON.parse(localStorage.getItem('usersMessages'));
+let usersMessages;
+
+
+const getLocalStorage = () => {
+  if (localStorage.getItem('usersMessages')) {
+    usersMessages = JSON.parse(localStorage.getItem('usersMessages'));
+  } else {
+    usersMessages = [];
+  }
+};
+getLocalStorage();
+
+
+const users = {
+  1: {
+    id: 1,
+    userName: 'user',
+  },
+  2: {
+    id: 2,
+    userName: 'server',
+  },
+};
+
 
 const createObj = (id, message) => ({
   id,
   message,
 });
+
 
 const getDate = () => {
   const date = new Date();
@@ -26,11 +49,13 @@ const getDate = () => {
   return `${hours}:${minutes}:${seconds}`;
 };
 
+
 const appendMessage = (sms) => {
   const newDiv = document.createElement('div');
-  newDiv.innerHTML = sms;
+  newDiv.textContent = sms;
   output.appendChild(newDiv);
 };
+
 
 const setLocalStorage = (object) => {
   usersMessages.push(object);
@@ -38,21 +63,28 @@ const setLocalStorage = (object) => {
   localStorage.setItem('usersMessages', str);
 };
 
-if (state != null) {
-  Array.prototype.forEach.call(state, (item) => {
-    appendMessage(item.message);
-  });
+
+if (usersMessages != null) {
+  for (const key in users) {
+    if (Object.prototype.hasOwnProperty.call(users, key)) {
+      appendMessage(users[key].userName);
+    }
+  }
+  // Array.prototype.forEach.call(users, (item) => {
+  //   console.log(item);
+  // });
 }
+
 
 submit.addEventListener('submit', (event) => {
   event.preventDefault();
   getDate();
-  setLocalStorage(createObj('user', textarea.value));
-  appendMessage(usersMessages[usersMessages.length - 1].message);
+  setLocalStorage(createObj('1', textarea.value));
+  appendMessage(users[usersMessages[usersMessages.length - 1].id].userName);
   textarea.value = '';
   setTimeout(() => {
     getDate();
-    setLocalStorage(createObj('server', 'эмуляция ответа'));
-    appendMessage(usersMessages[usersMessages.length - 1].message);
+    setLocalStorage(createObj('2', 'эмуляция ответа'));
+    appendMessage(users[usersMessages[usersMessages.length - 1].id].userName);
   }, 1000);
 });
