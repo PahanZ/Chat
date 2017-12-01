@@ -1,64 +1,62 @@
 const output = document.getElementById('output');
-const message = document.getElementById('message');
+const textarea = document.getElementById('message');
 const submit = document.getElementById('form');
-const usersMessage = [];
-// const obj = {
-//   name: 'user',
-//   message: '',
-//   date: new Date(),
-//   showDate() {
-//     return `${this.date.getHours()}:${this.date.getMinutes()}:${this.date.getSeconds()}`;
-//   },
-// };
-const serv = {
-  name: 'server',
-  message: 'эмуляция ответа',
-  date: new Date(),
-  showDate() {
-    return `${this.date.getHours()}:${this.date.getMinutes()}:${this.date.getSeconds()}`;
-  },
+const usersMessages = [];
+const state = JSON.parse(localStorage.getItem('usersMessages'));
+
+const createObj = (id, message) => ({
+  id,
+  message,
+});
+
+
+const getDate = () => {
+  const date = new Date();
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let seconds = date.getSeconds();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  };
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+  return `${hours}:${minutes}:${seconds}`;
 };
 
-const state = JSON.parse(localStorage.getItem('usersMessage'));
-
-const showMessage = (sms) => {
+const appendMessage = (sms) => {
   const newDiv = document.createElement('div');
   newDiv.innerHTML = sms;
   output.appendChild(newDiv);
 };
 
 
-const setLocalStorage = () => {
-  const str = JSON.stringify(usersMessage);
-  localStorage.setItem('usersMessage', str);
+const setLocalStorage = (object) => {
+  usersMessages.push(object);
+  const str = JSON.stringify(usersMessages);
+  localStorage.setItem('usersMessages', str);
 };
 
 
 if (state != null) {
   Array.prototype.forEach.call(state, (item) => {
-    showMessage(item.message);
+    appendMessage(item.message);
   });
 }
 
 submit.addEventListener('submit', (event) => {
   event.preventDefault();
-  const user = {
-    name: 'user',
-    message: message.value,
-    date: new Date(),
-    showDate() {
-      return `${this.date.getHours()}:${this.date.getMinutes()}:${this.date.getSeconds()}`;
-    },
-  };
-  usersMessage.push(user);
-  setLocalStorage();
-  showMessage(user.message);
-  message.value = '';
-  console.log(usersMessage);
+  getDate();
+  setLocalStorage(createObj('user', textarea.value));
+  appendMessage(usersMessages[usersMessages.length - 1].message);
+  textarea.value = '';
   setTimeout(() => {
-    showMessage(serv.message);
-    usersMessage.push(serv);
-    setLocalStorage();
+    getDate();
+    setLocalStorage(createObj('server', 'эмуляция ответа'));
+    appendMessage(usersMessages[usersMessages.length - 1].message);
   }, 1000);
 });
 
