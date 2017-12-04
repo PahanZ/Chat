@@ -14,7 +14,7 @@ const getLocalStorage = () => {
 getLocalStorage();
 
 
-const users = { // зачем отдельно хранить еще один объект с объектами, если есть просто массив с объектами, из которого можно вытянуть всю инфу
+const users = {
   1: {
     id: 1,
     userName: 'user',
@@ -29,11 +29,11 @@ const users = { // зачем отдельно хранить еще один о
 const createObj = (id, message) => ({
   id,
   message,
+  date: new Date(),
 });
 
 
-const getDate = () => {
-  const date = new Date();
+const getDate = (date) => {
   let hours = date.getHours();
   let minutes = date.getMinutes();
   let seconds = date.getSeconds();
@@ -65,26 +65,23 @@ const setLocalStorage = (object) => {
 
 
 if (usersMessages != null) {
-  for (const key in users) {
-    if (Object.prototype.hasOwnProperty.call(users, key)) { // че сделать с этим косяком и с циклом  for in
-      appendMessage(users[key].userName);
-    }
-  }
-  // Array.prototype.forEach.call(users, (item) => {
-  //   console.log(item);
-  // });
+  Array.prototype.forEach.call(usersMessages, (item) => {
+    appendMessage(item.message);
+  });
 }
 
 
 submit.addEventListener('submit', (event) => {
   event.preventDefault();
-  getDate();
-  setLocalStorage(createObj('1', textarea.value)); // как добавить свойство не указываю его(т.е. добавить объект в объект просто)
-  appendMessage(users[usersMessages[usersMessages.length - 1].id].userName); // зачем отображать имя пользователя ,если нам нужны сообщени/
+  setLocalStorage(createObj('1', textarea.value));
+  getDate(usersMessages[usersMessages.length - 1].date);
+  appendMessage(usersMessages[usersMessages.length - 1].message);
+
+
   textarea.value = '';
   setTimeout(() => {
-    getDate();
     setLocalStorage(createObj('2', 'эмуляция ответа'));
-    appendMessage(users[usersMessages[usersMessages.length - 1].id].userName);
+    getDate(usersMessages[usersMessages.length - 1].date);
+    appendMessage(usersMessages[usersMessages.length - 1].message);
   }, 1000);
 });
