@@ -71,17 +71,31 @@ if (usersMessages != null) {
 }
 
 
+// const display = () => {
+//   Object.keys(users).forEach((element) => {
+//     for (let index = usersMessages.length - 1; index > 0; index--) {
+//       if (users[element].id === Number(usersMessages[index].id)) {
+//         // getDate(usersMessages[index].date);
+//         appendMessage(usersMessages[index].message);
+//         break;
+//       }
+//     }
+//   });
+// }
+
 submit.addEventListener('submit', (event) => {
   event.preventDefault();
-  setLocalStorage(createObj('1', textarea.value));
-  getDate(usersMessages[usersMessages.length - 1].date);
-  appendMessage(usersMessages[usersMessages.length - 1].message);
-
-
+  let object = createObj('1', textarea.value);
+  setLocalStorage(object);
+  getDate(object.date);
+  appendMessage(object.message);
+  // display();
   textarea.value = '';
   setTimeout(() => {
-    setLocalStorage(createObj('2', 'эмуляция ответа'));
-    getDate(usersMessages[usersMessages.length - 1].date);
-    appendMessage(usersMessages[usersMessages.length - 1].message);
+    let object = createObj('2', 'эмуляция ответа')
+    setLocalStorage(object);
+    getDate(object.date);
+    appendMessage(object.message);
+    // display();
   }, 1000);
 });
