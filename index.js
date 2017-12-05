@@ -26,11 +26,29 @@ const users = {
 };
 
 
+
 const createObj = (id, message) => ({
   id,
   message,
   date: new Date(),
 });
+
+const checkUsers = (id, name) => {
+  if (users.hasOwnProperty(id)) {
+    return
+  } else {
+    const x = Object.keys(users);
+    let y = x.reduce((prev, now) => {
+      return Math.max(prev, now) + 1;
+    })
+    Object.defineProperty(users, y, {
+      value: {
+        id: y,
+        userName: name,
+      },
+    })
+  }
+}
 
 
 const getDate = (date) => {
@@ -72,24 +90,33 @@ if (usersMessages != null) {
 
 
 // const display = () => {
+//   let length;
 //   Object.keys(users).forEach((element) => {
-//     for (let index = usersMessages.length - 1; index > 0; index--) {
-//       if (users[element].id === Number(usersMessages[index].id)) {
-//         // getDate(usersMessages[index].date);
-//         appendMessage(usersMessages[index].message);
-//         break;
+//     // if (usersMessages.length != 0) {
+//     //   length = usersMessages.length - 1;
+//     // } 
+//     // else {
+//     //   length = usersMessages.length;
+//     // };
+//     for (let index = usersMessages.length-1; index > 0; index--) {
+//         if (users[element].id === Number(usersMessages[index].id)) {
+//           // getDate(usersMessages[index].date);
+//           // appendMessage(usersMessages[index].message);
+//           break;
+//         }
 //       }
-//     }
 //   });
 // }
 
 submit.addEventListener('submit', (event) => {
   event.preventDefault();
   let object = createObj('1', textarea.value);
+  checkUsers(object.id, 'user2');
+  console.log(users);
+  // display();
   setLocalStorage(object);
   getDate(object.date);
   appendMessage(object.message);
-  // display();
   textarea.value = '';
   setTimeout(() => {
     let object = createObj('2', 'эмуляция ответа')
@@ -99,3 +126,4 @@ submit.addEventListener('submit', (event) => {
     // display();
   }, 1000);
 });
+
