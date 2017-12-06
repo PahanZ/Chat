@@ -26,29 +26,23 @@ const users = {
 };
 
 
-
 const createObj = (id, message) => ({
   id,
   message,
   date: new Date(),
 });
 
-const checkUsers = (id, name) => {
-  if (users.hasOwnProperty(id)) {
-    return
-  } else {
-    const x = Object.keys(users);
-    let y = x.reduce((prev, now) => {
-      return Math.max(prev, now) + 1;
-    })
-    Object.defineProperty(users, y, {
-      value: {
-        id: y,
-        userName: name,
-      },
-    })
+
+const addUserIfNotExists = (id, name) => {
+  if (!Object.prototype.hasOwnProperty.call(users, id)) {
+    const usersArray = Object.keys(users);
+    const nextUserId = Math.max(...usersArray) + 1;
+    users[nextUserId] = {
+      id: nextUserId,
+      userName: name,
+    };
   }
-}
+};
 
 
 const getDate = (date) => {
@@ -75,8 +69,13 @@ const appendMessage = (sms) => {
 };
 
 
-const setLocalStorage = (object) => {
+const addObjectToUserMessages = (object) => {
   usersMessages.push(object);
+};
+
+
+const setMessageToLocalStorage = (object) => {
+  addObjectToUserMessages(object);
   const str = JSON.stringify(usersMessages);
   localStorage.setItem('usersMessages', str);
 };
@@ -90,39 +89,42 @@ if (usersMessages != null) {
 
 
 // const display = () => {
-//   let length;
 //   Object.keys(users).forEach((element) => {
-//     // if (usersMessages.length != 0) {
+//     // let length;
+//     // if (usersMessages.length === 0) {
+//     //   [length] = usersMessages;
+//     // } else {
 //     //   length = usersMessages.length - 1;
-//     // } 
-//     // else {
-//     //   length = usersMessages.length;
-//     // };
-//     for (let index = usersMessages.length-1; index > 0; index--) {
-//         if (users[element].id === Number(usersMessages[index].id)) {
-//           // getDate(usersMessages[index].date);
-//           // appendMessage(usersMessages[index].message);
-//           break;
-//         }
-//       }
+//     // }
+//     for (let index = usersMessages.length; index > 0; index -= 1) {
+//       // console.log(usersMessages[index]);
+//       // if (users[element].id === Number(usersMessages[index])) {
+//       //   // getDate(usersMessages[index].date);
+//       //   // appendMessage(usersMessages[index].message);
+//       //   console.log(`users${users[element].id}`);
+//       //   console.log(`usersMessages${usersMessages[index].id}`);
+//       //   break;
+//       // }
+//     }
 //   });
-// }
+// };
+// display();
+// console.log(usersMessages.length);
 
 submit.addEventListener('submit', (event) => {
   event.preventDefault();
-  let object = createObj('1', textarea.value);
-  checkUsers(object.id, 'user2');
-  console.log(users);
+  const object = createObj('1', textarea.value);
+  addUserIfNotExists(object.id, 'user2');
   // display();
-  setLocalStorage(object);
+  setMessageToLocalStorage(object);
   getDate(object.date);
   appendMessage(object.message);
   textarea.value = '';
   setTimeout(() => {
-    let object = createObj('2', 'эмуляция ответа')
-    setLocalStorage(object);
-    getDate(object.date);
-    appendMessage(object.message);
+    const objectServer = createObj('2', 'эмуляция ответа');
+    setMessageToLocalStorage(objectServer);
+    getDate(objectServer.date);
+    appendMessage(objectServer.message);
     // display();
   }, 1000);
 });
