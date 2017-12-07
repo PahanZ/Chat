@@ -19,6 +19,7 @@ body {
     align-items: center;
     background-color: #fff;
     height: 80%;
+    overflow: scroll;
 }
 form {
 	display: flex;
