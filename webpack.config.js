@@ -10,7 +10,7 @@ const config = {
         filename: 'bundle.js'
     },
     plugins: [
-        new webpack.optimize.UglifyJsPlugin(),
+        // new webpack.optimize.UglifyJsPlugin(),
         new HtmlWebpackPlugin({ template: './src/index.html' })
     ]
 };
