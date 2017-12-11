@@ -115,6 +115,7 @@ submit.addEventListener('submit', (event) => {
   event.preventDefault();
   const object = createObj('1', textarea.value);
   addUserIfNotExists(object.id, 'user2');
+  console.log('ok');
   // display();
   setMessageToLocalStorage(object);
   getDate(object.date);
