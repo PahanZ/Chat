@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+
 const config = {
   entry: './src/js/index.js',
   output: {
@@ -17,7 +18,17 @@ const config = {
           fallback: 'style-loader',
           use: ['css-loader', 'sass-loader']
         })
-      }
+      },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      },
     ]
   },
   plugins: [
