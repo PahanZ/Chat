@@ -21,7 +21,7 @@ body {
     height: 80%;
     overflow: scroll;
 }
-form {
+#form {
 	display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,7 +37,7 @@ textarea {
 button {
 	padding: 7px;
     border-radius: 5px;
-    border: navajowhite;
+    border: none;
     cursor: pointer;
     margin-top: 25px;
 }

@@ -1,10 +1,10 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const webpack = require('webpack');
+const webpack = require('webpack');
 const path = require('path');
 
 
 const config = {
-  entry: './src/index.js',
+  entry: './src/js/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -14,5 +14,6 @@ const config = {
     new HtmlWebpackPlugin({ template: './src/index.html' }),
   ],
 };
+
 
 module.exports = config;

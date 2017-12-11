@@ -60,143 +60,190 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return users; });
+const users = {
+    1: {
+        id: 1,
+        userName: 'user',
+    },
+    2: {
+        id: 2,
+        userName: 'server',
+    },
+};
+
+
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return appendMessage; });
+const appendMessage = (sms) => {
+    const newDiv = document.createElement('div');
+    newDiv.textContent = sms;
+    output.appendChild(newDiv);
+};
+
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__getDate__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__users__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__createObj__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__appendMessage__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__addUserIfNotExists__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__localStorageOperations__ = __webpack_require__(6);
+
+
+
+
+
+
 
 const output = document.getElementById('output');
 const textarea = document.getElementById('message');
 const submit = document.getElementById('form');
+
+Object(__WEBPACK_IMPORTED_MODULE_5__localStorageOperations__["b" /* getLocalStorage */])();
+Object(__WEBPACK_IMPORTED_MODULE_5__localStorageOperations__["a" /* appendFromLocalStorage */])();
+
+
+submit.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const object = Object(__WEBPACK_IMPORTED_MODULE_2__createObj__["a" /* createObj */])('1', textarea.value);
+  Object(__WEBPACK_IMPORTED_MODULE_4__addUserIfNotExists__["a" /* addUserIfNotExists */])(object.id, 'user2');
+  Object(__WEBPACK_IMPORTED_MODULE_5__localStorageOperations__["c" /* setMessageToLocalStorage */])(object);
+  Object(__WEBPACK_IMPORTED_MODULE_0__getDate__["a" /* getDate */])(object.date);
+  Object(__WEBPACK_IMPORTED_MODULE_3__appendMessage__["a" /* appendMessage */])(object.message);
+  textarea.value = '';
+  setTimeout(() => {
+    const objectServer = Object(__WEBPACK_IMPORTED_MODULE_2__createObj__["a" /* createObj */])('2', 'эмуляция ответа');
+    Object(__WEBPACK_IMPORTED_MODULE_5__localStorageOperations__["c" /* setMessageToLocalStorage */])(objectServer);
+    Object(__WEBPACK_IMPORTED_MODULE_0__getDate__["a" /* getDate */])(objectServer.date);
+    Object(__WEBPACK_IMPORTED_MODULE_3__appendMessage__["a" /* appendMessage */])(objectServer.message);
+  }, 1000);
+});
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getDate; });
+const getDate = (date) => {
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    if (hours < 10) {
+        hours = `0${hours}`;
+    }
+    if (minutes < 10) {
+        minutes = `0${minutes}`;
+    }
+    if (seconds < 10) {
+        seconds = `0${seconds}`;
+    }
+    return `${hours}:${minutes}:${seconds}`;
+};
+
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return createObj; });
+const createObj = (id, message) => ({
+    id,
+    message,
+    date: new Date(),
+});
+
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return addUserIfNotExists; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__users__ = __webpack_require__(0);
+
+
+
+const addUserIfNotExists = (id, name) => {
+    if (!Object.prototype.hasOwnProperty.call(__WEBPACK_IMPORTED_MODULE_0__users__["a" /* users */], id)) {
+        const usersArray = Object.keys(__WEBPACK_IMPORTED_MODULE_0__users__["a" /* users */]);
+        const nextUserId = Math.max(...usersArray) + 1;
+        __WEBPACK_IMPORTED_MODULE_0__users__["a" /* users */][nextUserId] = {
+            id: nextUserId,
+            userName: name,
+        };
+    }
+};
+
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export usersMessages */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getLocalStorage; });
+/* unused harmony export addObjectToUserMessages */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setMessageToLocalStorage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return appendFromLocalStorage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__appendMessage__ = __webpack_require__(1);
+
 let usersMessages;
 
 
 const getLocalStorage = () => {
-  if (localStorage.getItem('usersMessages')) {
-    usersMessages = JSON.parse(localStorage.getItem('usersMessages'));
-  } else {
-    usersMessages = [];
-  }
+    if (localStorage.getItem('usersMessages')) {
+        usersMessages = JSON.parse(localStorage.getItem('usersMessages'));
+    } else {
+        usersMessages = [];
+    }
 };
-getLocalStorage();
-
-
-const users = {
-  1: {
-    id: 1,
-    userName: 'user',
-  },
-  2: {
-    id: 2,
-    userName: 'server',
-  },
-};
-
-
-const createObj = (id, message) => ({
-  id,
-  message,
-  date: new Date(),
-});
-
-
-const addUserIfNotExists = (id, name) => {
-  if (!Object.prototype.hasOwnProperty.call(users, id)) {
-    const usersArray = Object.keys(users);
-    const nextUserId = Math.max(...usersArray) + 1;
-    users[nextUserId] = {
-      id: nextUserId,
-      userName: name,
-    };
-  }
-};
-
-
-const getDate = (date) => {
-  let hours = date.getHours();
-  let minutes = date.getMinutes();
-  let seconds = date.getSeconds();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-  if (seconds < 10) {
-    seconds = `0${seconds}`;
-  }
-  return `${hours}:${minutes}:${seconds}`;
-};
-
-
-const appendMessage = (sms) => {
-  const newDiv = document.createElement('div');
-  newDiv.textContent = sms;
-  output.appendChild(newDiv);
-};
-
 
 const addObjectToUserMessages = (object) => {
-  usersMessages.push(object);
+    usersMessages.push(object);
 };
 
 
 const setMessageToLocalStorage = (object) => {
-  addObjectToUserMessages(object);
-  const str = JSON.stringify(usersMessages);
-  localStorage.setItem('usersMessages', str);
+    addObjectToUserMessages(object);
+    const str = JSON.stringify(usersMessages);
+    localStorage.setItem('usersMessages', str);
 };
 
 
-if (usersMessages != null) {
-  Array.prototype.forEach.call(usersMessages, (item) => {
-    appendMessage(item.message);
-  });
+const appendFromLocalStorage = () => {
+    if (usersMessages != null) {
+        Array.prototype.forEach.call(usersMessages, (item) => {
+            Object(__WEBPACK_IMPORTED_MODULE_0__appendMessage__["a" /* appendMessage */])(item.message);
+        });
+    }
 }
-
-
-// const display = () => {
-//   Object.keys(users).forEach((element) => {
-//     // let length;
-//     // if (usersMessages.length === 0) {
-//     //   [length] = usersMessages;
-//     // } else {
-//     //   length = usersMessages.length - 1;
-//     // }
-//     for (let index = usersMessages.length; index > 0; index -= 1) {
-//       // console.log(usersMessages[index]);
-//       // if (users[element].id === Number(usersMessages[index])) {
-//       //   // getDate(usersMessages[index].date);
-//       //   // appendMessage(usersMessages[index].message);
-//       //   console.log(`users${users[element].id}`);
-//       //   console.log(`usersMessages${usersMessages[index].id}`);
-//       //   break;
-//       // }
-//     }
-//   });
-// };
-// display();
-// console.log(usersMessages.length);
-
-submit.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const object = createObj('1', textarea.value);
-  addUserIfNotExists(object.id, 'user2');
-  // display();
-  setMessageToLocalStorage(object);
-  getDate(object.date);
-  appendMessage(object.message);
-  textarea.value = '';
-  setTimeout(() => {
-    const objectServer = createObj('2', 'эмуляция ответа');
-    setMessageToLocalStorage(objectServer);
-    getDate(objectServer.date);
-    appendMessage(objectServer.message);
-    // display();
-  }, 1000);
-});
 
 
 
