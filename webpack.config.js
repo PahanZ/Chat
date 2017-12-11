@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const config = {
   entry: './src/js/index.js',
@@ -33,6 +33,7 @@ const config = {
   },
   plugins: [
     // new webpack.optimize.UglifyJsPlugin(),
+    new UglifyJsPlugin(),
     new ExtractTextPlugin('./css/style.css'),
     new HtmlWebpackPlugin({ template: './src/index.html' }),
   ],
