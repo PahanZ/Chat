@@ -103,12 +103,15 @@ const appendMessage = (sms) => {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__getDate__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__users__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__createObj__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__appendMessage__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__addUserIfNotExists__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__localStorageOperations__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__style_scss__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__style_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__style_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__getDate__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__users__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__createObj__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__appendMessage__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__addUserIfNotExists__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__localStorageOperations__ = __webpack_require__(7);
+
 
 
 
@@ -120,29 +123,35 @@ const output = document.getElementById('output');
 const textarea = document.getElementById('message');
 const submit = document.getElementById('form');
 
-Object(__WEBPACK_IMPORTED_MODULE_5__localStorageOperations__["b" /* getLocalStorage */])();
-Object(__WEBPACK_IMPORTED_MODULE_5__localStorageOperations__["a" /* appendFromLocalStorage */])();
+Object(__WEBPACK_IMPORTED_MODULE_6__localStorageOperations__["b" /* getLocalStorage */])();
+Object(__WEBPACK_IMPORTED_MODULE_6__localStorageOperations__["a" /* appendFromLocalStorage */])();
 
 
 submit.addEventListener('submit', (event) => {
   event.preventDefault();
-  const object = Object(__WEBPACK_IMPORTED_MODULE_2__createObj__["a" /* createObj */])('1', textarea.value);
-  Object(__WEBPACK_IMPORTED_MODULE_4__addUserIfNotExists__["a" /* addUserIfNotExists */])(object.id, 'user2');
-  Object(__WEBPACK_IMPORTED_MODULE_5__localStorageOperations__["c" /* setMessageToLocalStorage */])(object);
-  Object(__WEBPACK_IMPORTED_MODULE_0__getDate__["a" /* getDate */])(object.date);
-  Object(__WEBPACK_IMPORTED_MODULE_3__appendMessage__["a" /* appendMessage */])(object.message);
+  const object = Object(__WEBPACK_IMPORTED_MODULE_3__createObj__["a" /* createObj */])('1', textarea.value);
+  Object(__WEBPACK_IMPORTED_MODULE_5__addUserIfNotExists__["a" /* addUserIfNotExists */])(object.id, 'user2');
+  Object(__WEBPACK_IMPORTED_MODULE_6__localStorageOperations__["c" /* setMessageToLocalStorage */])(object);
+  Object(__WEBPACK_IMPORTED_MODULE_1__getDate__["a" /* getDate */])(object.date);
+  Object(__WEBPACK_IMPORTED_MODULE_4__appendMessage__["a" /* appendMessage */])(object.message);
   textarea.value = '';
   setTimeout(() => {
-    const objectServer = Object(__WEBPACK_IMPORTED_MODULE_2__createObj__["a" /* createObj */])('2', 'эмуляция ответа');
-    Object(__WEBPACK_IMPORTED_MODULE_5__localStorageOperations__["c" /* setMessageToLocalStorage */])(objectServer);
-    Object(__WEBPACK_IMPORTED_MODULE_0__getDate__["a" /* getDate */])(objectServer.date);
-    Object(__WEBPACK_IMPORTED_MODULE_3__appendMessage__["a" /* appendMessage */])(objectServer.message);
+    const objectServer = Object(__WEBPACK_IMPORTED_MODULE_3__createObj__["a" /* createObj */])('2', 'эмуляция ответа');
+    Object(__WEBPACK_IMPORTED_MODULE_6__localStorageOperations__["c" /* setMessageToLocalStorage */])(objectServer);
+    Object(__WEBPACK_IMPORTED_MODULE_1__getDate__["a" /* getDate */])(objectServer.date);
+    Object(__WEBPACK_IMPORTED_MODULE_4__appendMessage__["a" /* appendMessage */])(objectServer.message);
   }, 1000);
 });
 
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -166,7 +175,7 @@ const getDate = (date) => {
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -180,7 +189,7 @@ const createObj = (id, message) => ({
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -203,7 +212,7 @@ const addUserIfNotExists = (id, name) => {
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

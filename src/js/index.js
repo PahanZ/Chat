@@ -1,3 +1,4 @@
+import '../style.scss';
 import { getDate } from "./getDate";
 import { users } from "./users";
 import { createObj } from "./createObj";
