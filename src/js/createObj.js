@@ -1,7 +1,5 @@
-const createObj = (id, message) => ({
+export default (id, message) => ({
     id,
     message,
     date: new Date(),
 });
-
-export { createObj };

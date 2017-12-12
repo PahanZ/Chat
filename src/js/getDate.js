@@ -1,4 +1,4 @@
-const getDate = (date) => {
+export default (date) => {
     let hours = date.getHours();
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
@@ -13,5 +13,3 @@ const getDate = (date) => {
     }
     return `${hours}:${minutes}:${seconds}`;
 };
-
-export { getDate };

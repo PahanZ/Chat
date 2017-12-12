@@ -33,7 +33,7 @@ const config = {
   },
   plugins: [
     // new webpack.optimize.UglifyJsPlugin(),
-    new UglifyJsPlugin(),
+    // new UglifyJsPlugin(),
     new ExtractTextPlugin('./css/style.css'),
     new HtmlWebpackPlugin({ template: './src/index.html' }),
   ],
