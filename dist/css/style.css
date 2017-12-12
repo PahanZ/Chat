@@ -31,6 +31,6 @@ body {
         margin: 25px; }
       body .wrapp #form textarea {
         width: 75%;
-        height: 50%; }
+        height: 10vh; }
       body .wrapp #form label {
         padding: 15px; }

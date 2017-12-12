@@ -3,10 +3,4 @@ module.exports = {
     "env": {
         "browser": true
     }
-    // "rules": {
-    //     "no-plusplus": [
-    //         "error", 
-    //         { "allowForLoopAfterthoughts": true }
-    //     ]
-    // }
 };
