@@ -4,7 +4,7 @@ import users from "./users";
 import createObj from "./createObj";
 import { appendMessage } from "./appendMessage";
 import addUserIfNotExists from "./addUserIfNotExists";
-import { usersMessages, getLocalStorage, addObjectToUserMessages, setMessageToLocalStorage, appendFromLocalStorage } from "./localStorageOperations";
+import { usersMessages, getLocalStorage, setMessageToLocalStorage, appendFromLocalStorage } from "./API/messages";
 
 const output = document.getElementById('output');
 const textarea = document.getElementById('message');

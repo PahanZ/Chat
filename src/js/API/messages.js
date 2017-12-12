@@ -1,4 +1,5 @@
-import { appendMessage } from "./appendMessage";
+import { appendMessage } from "../appendMessage";
+import { addObjectToUserMessages } from "../addObjectToUserMessages";
 let usersMessages;
 
 
@@ -9,11 +10,6 @@ const getLocalStorage = () => {
         usersMessages = [];
     }
 };
-
-const addObjectToUserMessages = (object) => {
-    usersMessages.push(object);
-};
-
 
 const setMessageToLocalStorage = (object) => {
     addObjectToUserMessages(object);
@@ -30,4 +26,4 @@ const appendFromLocalStorage = () => {
     }
 }
 
-export { usersMessages, getLocalStorage, addObjectToUserMessages, setMessageToLocalStorage, appendFromLocalStorage  };
+export { usersMessages, getLocalStorage, setMessageToLocalStorage, appendFromLocalStorage };
