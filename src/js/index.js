@@ -1,7 +1,7 @@
 import '../style.scss';
 import getDate from './getDate';
 import createObj from './createObj';
-import { appendMessage } from './appendMessage';
+import appendMessage from './appendMessage';
 import addUserIfNotExists from './addUserIfNotExists';
 import { getLocalStorage, setMessageToLocalStorage, appendFromLocalStorage } from './API/messages';
 

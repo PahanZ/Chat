@@ -1,7 +1,6 @@
 import { usersMessages } from './API/messages';
 
-const addObjectToUserMessages = (object) => {
+export default (object) => {
   usersMessages.push(object);
 };
 
-export { addObjectToUserMessages };
