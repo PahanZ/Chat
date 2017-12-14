@@ -1,8 +1,8 @@
 import '../style.scss';
-import getDate from './getDate';
-import createObj from './createObj';
-import { appendMessage } from './appendMessage';
-import addUserIfNotExists from './addUserIfNotExists';
+import getDate from './storage/getDate';
+import createObj from './storage/createObj';
+import appendMessage from './storage/appendMessage';
+import addUserIfNotExists from './storage/addUserIfNotExists';
 import { getLocalStorage, setMessageToLocalStorage, appendFromLocalStorage } from './API/messages';
 
 const textarea = document.getElementById('message');
