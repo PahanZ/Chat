@@ -4,25 +4,26 @@ import createObj from './storage/createObj';
 import appendMessage from './storage/appendMessage';
 import addUserIfNotExists from './storage/addUserIfNotExists';
 import { getLocalStorage, setMessageToLocalStorage, appendFromLocalStorage } from './API/messages';
-import sentMessage from './actions/messages';
-import Observer from "./store";
+import { userMessage, serverMessage } from './actions/messages';
 
-const textarea = document.getElementById('message');
+
 const submit = document.getElementById('form');
+const textarea = document.getElementById('message');
 
 getLocalStorage();
 appendFromLocalStorage();
 
 submit.addEventListener('submit', (event) => {
   event.preventDefault();
-  const newObserver = new Observer();
-  newObserver.set(createObj('1', textarea.value));
-  newObserver.subscribe();
+  userMessage();
+
   // const object = createObj('1', textarea.value);
   // addUserIfNotExists(object.id, 'user2');
   // setMessageToLocalStorage(object);
   // getDate(object.date);
   // appendMessage(object.message);
   textarea.value = '';
-  sentMessage();
+  // serverMessage();
 });
+
+export default textarea;

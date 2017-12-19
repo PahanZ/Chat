@@ -12,7 +12,7 @@ export default class Observer {
   get() {
     return this.observers;
   }
-  subscribe() {
+  notification() {
     this.observers.forEach((item) => {
       appendMessage(item.message);
       appendMessage(getDate(item.date));
