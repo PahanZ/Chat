@@ -18,6 +18,15 @@ body {
             background-color: #fff;
             height: 85%;
             overflow: scroll;
+            .newMessage {
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                .messageDiv {
+                    flex-basis: 60%;
+                    text-align: center;
+                }
+            }
         }
         #form {
             display: flex;

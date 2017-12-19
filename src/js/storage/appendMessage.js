@@ -1,8 +1,15 @@
 const output = document.getElementById('output');
 
-export default (sms) => {
-  const newDiv = document.createElement('div');
-  newDiv.textContent = sms;
-  output.appendChild(newDiv);
+export default (sms, date) => {
+  const wrap = document.createElement('div');
+  wrap.className = 'newMessage';
+  const messageDiv = document.createElement('div');
+  messageDiv.className = 'messageDiv';
+  messageDiv.textContent = sms;
+  const dateDiv = document.createElement('div');
+  dateDiv.textContent = date;
+  wrap.appendChild(messageDiv);
+  wrap.appendChild(dateDiv);
+  output.appendChild(wrap);
 };
 

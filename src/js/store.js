@@ -1,4 +1,3 @@
-import appendMessage from './storage/appendMessage';
 import getDate from './storage/getDate';
 
 
@@ -6,16 +5,15 @@ export default class Observer {
   constructor() {
     this.observers = [];
   }
-  set(obj) {
-    this.observers.push(obj);
+  set(fn) {
+    this.observers.push(fn);
   }
   get() {
     return this.observers;
   }
-  notification() {
+  subscribe(subscriber) {
     this.observers.forEach((item) => {
-      appendMessage(item.message);
-      appendMessage(getDate(item.date));
+      subscriber(item.message, getDate(item.date));
     });
   }
 }

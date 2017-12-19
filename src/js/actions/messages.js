@@ -9,8 +9,8 @@ import textarea from '../index';
 const userMessage = () => {
   const newObserver = new Observer();
   newObserver.set(createObj('1', textarea.value));
-  newObserver.notification();
-  // setMessageToLocalStorage(newObserver);
+  newObserver.subscribe(appendMessage);
+  setMessageToLocalStorage(newObserver);
 };
 
 const serverMessage = () => {
