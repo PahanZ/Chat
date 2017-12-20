@@ -6,13 +6,10 @@ let usersMessages;
 
 const getLocalStorage = () => {
   if (localStorage.getItem('usersMessages')) {
-    let x = localStorage.getItem('usersMessages');
-    x = JSON.parse(x, (key, value) => {
-      if (key === 'date') {
-        return new Date(value);
-      }
+    usersMessages = JSON.parse(localStorage.getItem('usersMessages'), (key, value) => {
+      if (key === 'date') return new Date(value);
+      return value;
     });
-    usersMessages = JSON.parse(localStorage.getItem('usersMessages'));
   } else {
     usersMessages = [];
   }
@@ -21,8 +18,7 @@ const getLocalStorage = () => {
 const appendFromLocalStorage = () => {
   if (usersMessages != null) {
     Array.prototype.forEach.call(usersMessages, (item) => {
-      // appendMessage(item.observers[0].message, getDate(item.observers[0].date));
-      // console.log(item.observers[0].date);
+      appendMessage(item.observers[0].message, getDate(item.observers[0].date));
     });
   }
 };
@@ -30,7 +26,6 @@ const appendFromLocalStorage = () => {
 const setMessageToLocalStorage = (object) => {
   addObjectToUserMessages(object);
   const str = JSON.stringify(usersMessages);
-  console.log(str);
   localStorage.setItem('usersMessages', str);
 };
 
