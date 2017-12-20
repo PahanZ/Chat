@@ -18,7 +18,7 @@ displayMessage();
 submit.addEventListener('submit', (event) => {
   event.preventDefault();
   sentMessage();
-  appendMessage(newObserver().observers[0].message, getDate(newObserver().observers[0].date));
+  appendMessage();
 
   // const object = createObj('1', textarea.value);
   // addUserIfNotExists(object.id, 'user2');

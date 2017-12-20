@@ -17,7 +17,7 @@ const getMessage = () => {
 const displayMessage = () => {
   if (usersMessages != null) {
     Array.prototype.forEach.call(usersMessages, (item) => {
-      appendMessage(item.observers[0].message, getDate(item.observers[0].date));
+      appendMessage();
     });
   }
 };
