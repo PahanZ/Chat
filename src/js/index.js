@@ -1,5 +1,5 @@
 import '../style.scss';
-import getDate from './storage/getDate';
+// import getDate from './storage/getDate';
 // import createObj from './storage/createObj';
 // import appendMessage from './storage/appendMessage';
 // import addUserIfNotExists from './storage/addUserIfNotExists';

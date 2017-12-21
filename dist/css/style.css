@@ -18,6 +18,13 @@ body {
       background-color: #fff;
       height: 85%;
       overflow: scroll; }
+      body .wrapp #output .newMessage {
+        width: 100%;
+        display: flex;
+        justify-content: space-around; }
+        body .wrapp #output .newMessage .messageDiv {
+          flex-basis: 60%;
+          text-align: center; }
     body .wrapp #form {
       display: flex;
       flex-direction: column;
