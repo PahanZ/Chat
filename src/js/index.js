@@ -1,32 +1,40 @@
 import '../style.scss';
-// import getDate from './storage/getDate';
-// import createObj from './storage/createObj';
-// import appendMessage from './storage/appendMessage';
-// import addUserIfNotExists from './storage/addUserIfNotExists';
-import { getMessage, displayMessage } from './API/messages';
-import { serverMessage, sentMessage } from './actions/action';
-import appendMessage from './components/message';
-import newObserver from './components/observer';
+import { chat } from './components/chat';
+import message from './components/message';
+import messageList from './components/messageList';
+import { sentMessage } from './actions/action';
 
 
-const submit = document.getElementById('form');
-const textarea = document.getElementById('message');
+// // import getDate from './storage/getDate';
+// // import createObj from './storage/createObj';
+// // import appendMessage from './storage/appendMessage';
+// // import addUserIfNotExists from './storage/addUserIfNotExists';
+// import { displayMessage } from './API/messages';
+// import { serverMessage, sentMessage } from './actions/action';
+// import appendMessage from './components/message';
+// console.log(displayMessage());
 
-getMessage();
-displayMessage();
 
-submit.addEventListener('submit', (event) => {
-  event.preventDefault();
-  sentMessage();
-  appendMessage();
+chat(messageList, sentMessage, message);
 
-  // const object = createObj('1', textarea.value);
-  // addUserIfNotExists(object.id, 'user2');
-  // sentMessage(object);
-  // getDate(object.date);
-  // appendMessage(object.message);
-  textarea.value = '';
-  // serverMessage();
-});
+// const submit = document.getElementById('form');
+// const textarea = document.getElementById('message');
 
-export default textarea;
+
+// displayMessage();
+
+// submit.addEventListener('submit', (event) => {
+//   event.preventDefault();
+//   sentMessage();
+//   appendMessage();
+
+//   // const object = createObj('1', textarea.value);
+//   // addUserIfNotExists(object.id, 'user2');
+//   // sentMessage(object);
+//   // getDate(object.date);
+//   // appendMessage(object.message);
+//   textarea.value = '';
+//   // serverMessage();
+// });
+
+// export default textarea;

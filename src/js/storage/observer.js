@@ -1,6 +1,6 @@
-import Observer from '../store';
+import Observer from '../storage/store';
 import createObj from '../storage/createObj';
-import textarea from '../index';
+import { textarea } from '../components/chat';
 
 export default () => {
   const newObserver = new Observer();

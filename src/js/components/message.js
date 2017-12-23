@@ -1,14 +1,10 @@
-import { usersMessages } from '../API/messages';
+import { store } from '../API/getMessages';
 import getDate from '../storage/getDate';
-
-const output = document.getElementById('output');
+import { output } from './chat';
 
 export default () => {
   output.innerHTML = null;
-  // Array.prototype.forEach.call(output.children, (item) => {
-  //   item.remove();
-  // });
-  Array.prototype.forEach.call(usersMessages, (item) => {
+  Array.prototype.forEach.call(store, (item) => {
     const wrap = document.createElement('div');
     wrap.className = 'newMessage';
     const messageDiv = document.createElement('div');
