@@ -1,5 +1,4 @@
-import getDate from './storage/getDate';
-
+import getDate from './getDate';
 
 export default class Observer {
   constructor() {

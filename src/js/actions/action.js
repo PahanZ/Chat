@@ -1,14 +1,14 @@
 import getDate from '../storage/getDate';
 import appendMessage from '../components/message';
-import addObjectToUserMessages from '../storage/addObjectToUserMessages';
-import { usersMessages } from '../API/messages';
-import newObserver from '../components/observer';
+import addObjectToMessageList from '../storage/addObjectToMessageList';
+import { store } from '../API/getMessages';
+import newObserver from '../storage/observer';
 import createObj from '../storage/createObj';
 
 const sentMessage = () => {
-  addObjectToUserMessages(newObserver());
-  const str = JSON.stringify(usersMessages);
-  localStorage.setItem('usersMessages', str);
+  addObjectToMessageList(newObserver());
+  const str = JSON.stringify(store);
+  localStorage.setItem('store', str);
 };
 
 
