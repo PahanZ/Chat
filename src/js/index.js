@@ -1,8 +1,19 @@
 import '../style.scss';
-import { chat } from './components/chat';
-import message from './components/message';
-import messageList from './components/messageList';
-import { sentMessage } from './actions/action';
+import chat from './components/chat';
+
+chat();
+
+
+
+// import { chat } from './components/chat';
+// import message from './components/message';
+// import messageList from './components/messageList';
+// import { sentMessage } from './actions/action';
+
+// chat(messageList, sentMessage, message);
+
+
+
 
 
 // // import getDate from './storage/getDate';
@@ -14,8 +25,6 @@ import { sentMessage } from './actions/action';
 // import appendMessage from './components/message';
 // console.log(displayMessage());
 
-
-chat(messageList, sentMessage, message);
 
 // const submit = document.getElementById('form');
 // const textarea = document.getElementById('message');
