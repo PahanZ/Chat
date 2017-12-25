@@ -1,8 +1,7 @@
 import '../style.scss';
-import chat from './components/chat';
+import { chat } from './components/chat';
 
 chat();
-
 
 
 // import { chat } from './components/chat';

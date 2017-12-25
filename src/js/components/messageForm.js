@@ -17,5 +17,8 @@ export default class MessageForm {
     this.form.append(this.submit);
     this.src.append(this.form);
   }
+  get() {
+    return this.textarea;
+  }
 }
 

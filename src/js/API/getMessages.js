@@ -13,12 +13,13 @@ const getMessage = () => {
   }
 };
 
-const displayMessage = () => {
-  if (store != null) {
-    Array.prototype.forEach.call(store, () => {
-      appendMessage();
-    });
-  }
-};
+export { store, getMessage };
+// const displayMessage = () => {
+//   if (store != null) {
+//     Array.prototype.forEach.call(store, () => {
+//       appendMessage();
+//     });
+//   }
+// };
 
-export { store, getMessage, displayMessage };
+// export { store, getMessage, displayMessage };
