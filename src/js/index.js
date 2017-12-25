@@ -6,7 +6,6 @@ import '../style.scss';
 import { getMessage, displayMessage } from './API/messages';
 import { serverMessage, sentMessage } from './actions/action';
 import appendMessage from './components/message';
-import newObserver from './components/observer';
 
 
 const submit = document.getElementById('form');
