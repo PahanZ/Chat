@@ -9,7 +9,6 @@ export default class Messages {
     this.src.innerHTML = null;
     getMessage();
     if (store != null) {
-      this.src.innerHTML = null;
       Array.prototype.forEach.call(store, (item) => {
         const wrap = document.createElement('div');
         wrap.className = 'newMessage';
