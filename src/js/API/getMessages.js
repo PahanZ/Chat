@@ -1,4 +1,4 @@
-import appendMessage from '../components/message';
+// import appendMessage from '../components/message';
 
 let store;
 
