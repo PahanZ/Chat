@@ -3,23 +3,23 @@ import MessageList from './messageList';
 import MessageForm from './messageForm';
 import Message from './message';
 
-const chat = () => {
+export default () => {
   const wrap = new Wrap({ src: document.body });
   wrap.render();
-  const messageList = new MessageList({ src: document.getElementsByClassName('wrapp')[0], message: document.getElementById('output') });
+  const messageList = new MessageList({ src: document.getElementsByClassName('wrapp')[0] });
   messageList.render();
   const messageForm = new MessageForm({ src: document.getElementsByClassName('wrapp')[0] });
   messageForm.render();
   messageForm.form.addEventListener('submit', (event) => {
     event.preventDefault();
     const message = new Message();
-    // message.set();
-    console.log(messageForm.get());
+    message.set();
+    // messageList.render();
+    // messageForm.render();
     messageForm.get().value = '';
   });
 };
 
-export { chat };
 
 // const submit = document.getElementById('form');
 // const textarea = document.getElementById('message');

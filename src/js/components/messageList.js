@@ -4,7 +4,6 @@ import getDate from '../storage/getDate';
 export default class MessageList {
   constructor(options) {
     this.src = options.src;
-    this.message = options.message;
   }
   render() {
     this.output = document.createElement('div');
@@ -25,7 +24,7 @@ export default class MessageList {
         this.output.append(wrap);
       });
     }
-    this.src.append(this.output);
+    this.src.prepend(this.output);
   }
 }
 

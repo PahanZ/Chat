@@ -12,8 +12,7 @@ export default class Observer {
   }
   subscribe(subscriber) {
     this.observers.forEach((item) => {
-      console.log(item);
-      // subscriber(item.message, getDate(item.date));
+      subscriber(item.message, getDate(item.date));
     });
   }
 }
