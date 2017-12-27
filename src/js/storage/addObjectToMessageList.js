@@ -1,6 +1,6 @@
-import { store } from '../API/getMessages';
+import { getStore } from '../API/getMessages';
 
 export default (object) => {
-  store.push(object);
+  getStore().push(object);
 };
 

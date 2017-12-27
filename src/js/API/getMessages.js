@@ -1,8 +1,8 @@
-// import appendMessage from '../components/message';
-
 let store;
 
-const getMessage = () => {
+const getStore = () => store;
+
+const getFromStorage = () => {
   if (localStorage.getItem('store')) {
     store = JSON.parse(localStorage.getItem('store'), (key, value) => {
       if (key === 'date') return new Date(value);
@@ -13,13 +13,5 @@ const getMessage = () => {
   }
 };
 
-export { store, getMessage };
-// const displayMessage = () => {
-//   if (store != null) {
-//     Array.prototype.forEach.call(store, () => {
-//       appendMessage();
-//     });
-//   }
-// };
+export { getFromStorage, getStore };
 
-// export { store, getMessage, displayMessage };

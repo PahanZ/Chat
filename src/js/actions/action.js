@@ -1,13 +1,17 @@
 import addObjectToMessageList from '../storage/addObjectToMessageList';
-import { store } from '../API/getMessages';
+import { getStore } from '../API/getMessages';
 import newObserver from '../storage/observer';
+import messages from '../components/messages';
+// import message from './message';
 
-export default () => {
+export default (event) => {
+  event.preventDefault();
   addObjectToMessageList(newObserver());
-  const str = JSON.stringify(store);
+  const str = JSON.stringify(getStore());
   localStorage.setItem('store', str);
+  messages.render(document.getElementById('output'));
+  document.getElementById('message').value = '';
 };
-
 
 // import getDate from '../storage/getDate';
 // import appendMessage from '../components/message';

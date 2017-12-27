@@ -1,4 +1,4 @@
-export const users = {
+const users = {
   1: {
     id: 1,
     userName: 'user',
@@ -8,3 +8,5 @@ export const users = {
     userName: 'server',
   },
 };
+
+export default { users };

@@ -1,25 +1,21 @@
-import Wrap from './wrapper';
-import MessageList from './messageList';
-import MessageForm from './messageForm';
-import Message from './message';
-import Messages from './messages';
+import messageList from './messageList';
+import messageForm from './messageForm';
+import messages from './messages';
 
-export default () => {
-  const wrap = new Wrap({ src: document.body });
-  wrap.render();
-  const messageList = new MessageList({ src: document.getElementsByClassName('wrapp')[0] });
-  messageList.render();
-  const messageForm = new MessageForm({ src: document.getElementsByClassName('wrapp')[0] });
-  messageForm.render();
-  const messages = new Messages({ src: messageList.output });
-  messages.render();
-  messageForm.form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const message = new Message();
-    message.set();
-    messages.render();
-    messageForm.get().value = '';
-  });
+export default (form, sent) => {
+  messageList.render(document.getElementById('tmp1'));
+  messages.render(document.getElementById('output'));
+  messageForm.render(document.getElementById('tmp2'));
+  document.getElementById('form').addEventListener('submit', sent);
+
+  //form.addEventListener('submit', sent); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! не робит !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  // messageForm.form.addEventListener('submit', (event) => {
+  //   event.preventDefault();
+  //   sent();
+  //   messages.render();
+  //   messageForm.get().value = '';
+  // });
 };
 
 
