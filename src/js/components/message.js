@@ -1,10 +1,13 @@
-import sentMessage from '../actions/action';
+// import sentMessage from '../actions/action';
 
-export default class Message {
-  set() {    
-    sentMessage();
-  }
-}
+// class Message {
+//   set() {
+//     this.sent = sentMessage;
+//     this.sent();
+//   }
+// }
+
+// export default new Message();
 
 // import { store } from '../API/getMessages';
 // import getDate from '../storage/getDate';

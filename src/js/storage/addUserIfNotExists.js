@@ -1,4 +1,4 @@
-import { users } from './users';
+import users from './users';
 
 export default (id, name) => {
   if (!Object.prototype.hasOwnProperty.call(users, id)) {
