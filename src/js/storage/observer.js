@@ -1,8 +1,18 @@
-import Observer from '../storage/store';
-import createObj from '../storage/createObj';
+// import getDate from './getDate';
 
-export default () => {
-  const newObserver = new Observer();
-  newObserver.set(createObj('1', message.value));
-  return newObserver;
-};
+export default class Observer {
+  constructor() {
+    this.subscribers = [];
+  }
+  subscribe(callback) {
+    this.subscribers.push(callback);
+  }
+  unsubscribe(callback) {
+    this.subscribers = this.subscribers.filter(item => item !== callback);
+  }
+  emit(data) {
+    this.subscribers.forEach((item) => {
+      item(data);
+    });
+  }
+}

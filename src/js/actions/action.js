@@ -1,26 +1,40 @@
-import addObjectToMessageList from '../storage/addObjectToMessageList';
-import { getStore } from '../API/getMessages';
-import newObserver from '../storage/observer';
-import messages from '../components/messages';
-// import message from './message';
+// import newObserver from '../storage/observer';
+import createObj from '../storage/createObj';
+import instanceStore from '../storage/store';
 
-export default (method, value) => {
+
+export default () => {
   document.getElementById('form').addEventListener('submit', (event) => {
     event.preventDefault();
-    addObjectToMessageList(newObserver());
-    const str = JSON.stringify(getStore());
-    localStorage.setItem('store', str);
-    // messages.render(document.getElementById('output'));
-    method(value);
-    document.getElementById('message').value = '';
+    const consumer = (state) => {
+      console.log(state);
+    };
+    instanceStore.subscribe(consumer);
+    instanceStore.set(createObj('1', message.value));
+    message.value = '';
   });
+};
+
+
+
+// export default (method, value) => {
+//   document.getElementById('form').addEventListener('submit', (event) => {
+//     event.preventDefault();  
+    // const message = document.getElementById('message');
+    // const obj = createObj('1', message.value);
+    // newObserver.set(obj);
+    // const str = JSON.stringify(newObserver.get());
+    // localStorage.setItem('store', str);
+    // method(value);
+  //   message.value = '';
+  // });
   // event.preventDefault();
   // addObjectToMessageList(newObserver());
   // const str = JSON.stringify(getStore());
   // localStorage.setItem('store', str);
   // messages.render(document.getElementById('output'));
   // document.getElementById('message').value = '';
-};
+// };
 
 // import getDate from '../storage/getDate';
 // import appendMessage from '../components/message';

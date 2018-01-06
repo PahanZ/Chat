@@ -1,19 +1,18 @@
-import getDate from './getDate';
+import Observer from './observer';
 
-export default class Observer {
+class Store extends Observer {
   constructor() {
-    this.observers = [];
-  }
-  set(fn) {
-    this.observers.push(fn);
+    super();
+    this.state = {};
   }
   get() {
-    return this.observers;
+    return this.state;
   }
-  subscribe(subscriber) {
-    this.observers.forEach((item) => {
-      subscriber(item.message, getDate(item.date));
-    });
+  set(value) {
+    this.state = value;
+    this.emit(this);
   }
 }
 
+const instanceStore = new Store();
+export default instanceStore;
