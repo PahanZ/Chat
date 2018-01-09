@@ -1,15 +1,12 @@
 class MessageForm {
-  constructor(src) {
-    this.src = src;
+  constructor(event) {
+    // this.src = src;
+    this.onSubmit = event;
   }
   render(elem) {
     const form = elem.content;
     this.src.innerHTML = null;
     this.src.append(form.cloneNode(true));
-
-
-    // console.log(this.src);
-    // console.log(form);
 
 
     // this.form = document.createElement('form');
@@ -28,5 +25,4 @@ class MessageForm {
   }
 }
 
-const messageForm = new MessageForm(document.getElementsByClassName('wrapp')[0]);
-export default messageForm;
+export default MessageForm;

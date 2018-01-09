@@ -2,7 +2,8 @@ import '../style.scss';
 import sentMessage from './actions/action';
 import chat from './components/chat';
 
-sentMessage(chat);
+//sentMessage(chat);
+chat();
 
 
 // import { chat } from './components/chat';

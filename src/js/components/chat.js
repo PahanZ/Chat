@@ -1,11 +1,26 @@
-import messageList from './messageList';
-import messageForm from './messageForm';
-import messages from './messages';
+// import messageList from './messageList';
+import MessageForm from './messageForm';
+// import messages from './messages';
 
 export default () => {
-  messageList.render(document.getElementById('tmp1'));
-  messageForm.render(document.getElementById('tmp1'));
-  messages.render(document.getElementById('output'));
+  const template = document.getElementById('tmp1').content.cloneNode(true);
+  // const output = template.getElementById('output');
+  const formElement = template.getElementById('form');
+
+  const messageForm = new MessageForm({
+    onSubmit: () => {
+      console.log('callback');
+    },
+  });
+  formElement.append(messageForm);
+
+  console.log(messageForm);
+  return template;
+
+
+  // messageList.render(document.getElementById('tmp1'));
+  // messageForm.render(document.getElementById('tmp1'));
+  // messages.render(document.getElementById('output'));
 
 
   // sent(() => {
@@ -13,7 +28,7 @@ export default () => {
   // });
   // document.getElementById('form').addEventListener('submit', sent);
 
-  //form.addEventListener('submit', sent); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! не робит !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // form.addEventListener('submit', sent); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! не робит !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   // messageForm.form.addEventListener('submit', (event) => {
   //   event.preventDefault();
