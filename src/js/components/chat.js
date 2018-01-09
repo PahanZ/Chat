@@ -2,13 +2,15 @@ import messageList from './messageList';
 import messageForm from './messageForm';
 import messages from './messages';
 
-export default (sent) => {
+export default () => {
   messageList.render(document.getElementById('tmp1'));
   messageForm.render(document.getElementById('tmp1'));
   messages.render(document.getElementById('output'));
-  sent(() => {
-    messages.render(document.getElementById('output'));
-  });
+
+
+  // sent(() => {
+  //   messages.render(document.getElementById('output'));
+  // });
   // document.getElementById('form').addEventListener('submit', sent);
 
   //form.addEventListener('submit', sent); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! не робит !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

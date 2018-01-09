@@ -6,6 +6,12 @@ class MessageForm {
     const form = elem.content;
     this.src.innerHTML = null;
     this.src.append(form.cloneNode(true));
+
+
+    // console.log(this.src);
+    // console.log(form);
+
+
     // this.form = document.createElement('form');
     // this.form.id = 'form';
     // this.label = document.createElement('label');
@@ -20,9 +26,7 @@ class MessageForm {
     // this.form.append(this.submit);
     // this.src.append(this.form);
   }
-  get() {
-    return this.textarea;
-  }
 }
 
-export default new MessageForm(document.getElementsByClassName('wrapp')[0]);
+const messageForm = new MessageForm(document.getElementsByClassName('wrapp')[0]);
+export default messageForm;

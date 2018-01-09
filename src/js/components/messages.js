@@ -1,26 +1,41 @@
-import { getFromStorage, getStore } from '../API/getMessages';
+// import { getFromStorage, getStore } from '../API/getMessages';
 import getDate from '../storage/getDate';
-// import messageList from './messageList';
+import instanceStore from '../storage/store';
 
 class Messages {
   render(elem) {
     this.output = elem;
-    getFromStorage();
-    if (getStore() != null) {
-      this.output.innerHTML = null;
-      Array.prototype.forEach.call(getStore(), (item) => {
-        // console.log(item);
-        // const wrap = document.createElement('div');
-        // wrap.className = 'newMessage';
-        // const messageDiv = document.createElement('div');
-        // messageDiv.className = 'messageDiv';
-        // messageDiv.textContent = item.message;
-        // wrap.append(messageDiv);
-        // const dateDiv = document.createElement('div');
-        // dateDiv.textContent = getDate(item.date);
-        // wrap.append(dateDiv);
-        // this.output.append(wrap.cloneNode(true));
-      });
+    if (instanceStore.get() != null) {
+      // this.output.innerHTML = null;
+
+
+
+      
+      const wrap = document.createElement('div');
+      wrap.className = 'newMessage';
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'messageDiv';
+      messageDiv.textContent = instanceStore.get().message;
+      wrap.append(messageDiv);
+      const dateDiv = document.createElement('div');
+      dateDiv.textContent = getDate(instanceStore.get().date);
+      wrap.append(dateDiv);
+      this.output.append(wrap.cloneNode(true));
+
+
+      // Array.prototype.forEach.call(instanceStore.get(), (item) => {
+      // console.log(item);
+      // const wrap = document.createElement('div');
+      // wrap.className = 'newMessage';
+      // const messageDiv = document.createElement('div');
+      // messageDiv.className = 'messageDiv';
+      // messageDiv.textContent = item.message;
+      // wrap.append(messageDiv);
+      // const dateDiv = document.createElement('div');
+      // dateDiv.textContent = getDate(item.date);
+      // wrap.append(dateDiv);
+      // this.output.append(wrap.cloneNode(true));
+      // });
     }
     // this.output = messageList.output;
     // this.output.innerHTML = null;
@@ -42,4 +57,5 @@ class Messages {
   }
 }
 
-export default new Messages();
+const messages = new Messages();
+export default messages;

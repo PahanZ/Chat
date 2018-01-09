@@ -1,39 +1,35 @@
-// import newObserver from '../storage/observer';
 import createObj from '../storage/createObj';
 import instanceStore from '../storage/store';
 
-
-export default () => {
+export default (chat) => {
+  instanceStore.subscribe(() => {
+    chat();
+  });
   document.getElementById('form').addEventListener('submit', (event) => {
     event.preventDefault();
-    const consumer = (state) => {
-      console.log(state);
-    };
-    instanceStore.subscribe(consumer);
     instanceStore.set(createObj('1', message.value));
     message.value = '';
   });
 };
 
 
-
 // export default (method, value) => {
 //   document.getElementById('form').addEventListener('submit', (event) => {
-//     event.preventDefault();  
-    // const message = document.getElementById('message');
-    // const obj = createObj('1', message.value);
-    // newObserver.set(obj);
-    // const str = JSON.stringify(newObserver.get());
-    // localStorage.setItem('store', str);
-    // method(value);
-  //   message.value = '';
-  // });
-  // event.preventDefault();
-  // addObjectToMessageList(newObserver());
-  // const str = JSON.stringify(getStore());
-  // localStorage.setItem('store', str);
-  // messages.render(document.getElementById('output'));
-  // document.getElementById('message').value = '';
+//     event.preventDefault();
+// const message = document.getElementById('message');
+// const obj = createObj('1', message.value);
+// newObserver.set(obj);
+// const str = JSON.stringify(newObserver.get());
+// localStorage.setItem('store', str);
+// method(value);
+//   message.value = '';
+// });
+// event.preventDefault();
+// addObjectToMessageList(newObserver());
+// const str = JSON.stringify(getStore());
+// localStorage.setItem('store', str);
+// messages.render(document.getElementById('output'));
+// document.getElementById('message').value = '';
 // };
 
 // import getDate from '../storage/getDate';

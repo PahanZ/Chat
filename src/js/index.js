@@ -1,9 +1,9 @@
 import '../style.scss';
-import chat from './components/chat';
 import sentMessage from './actions/action';
+import chat from './components/chat';
 
-chat(sentMessage);
-// chat(document.getElementById('form'), sentMessage); !!!!!!!!!!!!!!!!! не робит!!!!!!!!!!
+sentMessage(chat);
+
 
 // import { chat } from './components/chat';
 // import message from './components/message';

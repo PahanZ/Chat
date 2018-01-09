@@ -3,9 +3,13 @@ class MessageList {
     this.src = src;
   }
   render(elem) {
-    // this.src.innerHTML = null;
+    this.src.innerHTML = null;
+
+
     const output = elem.content;
     this.src.prepend(output.cloneNode(true));
+
+
     
     // const output2 = output.cloneNode(true);
     // this.output = document.createElement('div');
@@ -14,4 +18,5 @@ class MessageList {
   }
 }
 
-export default new MessageList(document.getElementsByClassName('wrapp')[0]);
+const messageList = new MessageList(document.getElementsByClassName('wrapp')[0]);
+export default messageList;

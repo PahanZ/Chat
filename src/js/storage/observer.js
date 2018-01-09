@@ -1,5 +1,3 @@
-// import getDate from './getDate';
-
 export default class Observer {
   constructor() {
     this.subscribers = [];
