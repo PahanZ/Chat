@@ -1,9 +1,15 @@
 import '../style.scss';
-import sentMessage from './actions/action';
+// import sentMessage from './actions/action';
 import chat from './components/chat';
+import instanceStore from './storage/store';
 
-//sentMessage(chat);
-chat();
+const wrap = document.getElementsByClassName('wrapp')[0];
+instanceStore.subscribe(() => {
+  chat();
+});
+wrap.innerHTML = null;
+wrap.append(chat());
+// console.log(chat(sentMessage()));
 
 
 // import { chat } from './components/chat';
@@ -12,9 +18,6 @@ chat();
 // import { sentMessage } from './actions/action';
 
 // chat(messageList, sentMessage, message);
-
-
-
 
 
 // // import getDate from './storage/getDate';

@@ -1,15 +1,9 @@
 import createObj from '../storage/createObj';
 import instanceStore from '../storage/store';
 
-export default (chat) => {
-  instanceStore.subscribe(() => {
-    chat();
-  });
-  document.getElementById('form').addEventListener('submit', (event) => {
-    event.preventDefault();
-    instanceStore.set(createObj('1', message.value));
-    message.value = '';
-  });
+export default () => {
+  instanceStore.set(createObj('1', message.value));
+  message.value = '';
 };
 
 

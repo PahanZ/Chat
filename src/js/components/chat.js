@@ -1,20 +1,28 @@
 // import messageList from './messageList';
-import MessageForm from './messageForm';
-// import messages from './messages';
+import messageForm from './messageForm';
+import messages from './messages';
+// import instanceStore from '../storage/store';
+// import createObj from '../storage/createObj';
+import action from '../actions/action';
 
 export default () => {
   const template = document.getElementById('tmp1').content.cloneNode(true);
-  // const output = template.getElementById('output');
+  const output = template.getElementById('output');
+  // if (instanceStore.get() !== null) {
+  //   output.append(instanceStore.get().message);
+  // }
   const formElement = template.getElementById('form');
-
-  const messageForm = new MessageForm({
+  messageForm({
+    element: formElement,
     onSubmit: () => {
-      console.log('callback');
+      action();
+      // instanceStore.set(createObj('1', formElement.getElementsByTagName('textarea')[0].value));
+      // formElement.getElementsByTagName('textarea')[0].value = '';
+      messages(output);
     },
   });
-  formElement.append(messageForm);
-
-  console.log(messageForm);
+  template.append(output);
+  template.append(formElement);
   return template;
 
 
@@ -38,20 +46,3 @@ export default () => {
   // });
 };
 
-
-// const submit = document.getElementById('form');
-// const textarea = document.getElementById('message');
-// const output = document.getElementById('output');
-
-
-// const chat = (messageList, sentMessage, message) => {
-//   messageList();
-//   submit.addEventListener('submit', (event) => {
-//     event.preventDefault();
-//     sentMessage();
-//     message();
-//     textarea.value = '';
-//   });
-// };
-
-// export { chat, textarea, output };

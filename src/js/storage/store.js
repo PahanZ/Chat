@@ -3,7 +3,7 @@ import Observer from './observer';
 class Store extends Observer {
   constructor() {
     super();
-    this.state = {};
+    this.state = null;
   }
   get() {
     return this.state;
