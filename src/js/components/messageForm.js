@@ -1,8 +1,14 @@
+// import messages from './messages';
+
 const messageForm = ({ element, onSubmit }) => {
-  element.addEventListener('submit', (event) => {
+  const form = element.getElementById('form');
+  // const output = element.getElementById('output');
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
     onSubmit();
   });
+  // messages(output);
+  element.append(form);
 };
 
 export default messageForm;

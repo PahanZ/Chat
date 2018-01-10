@@ -1,28 +1,17 @@
 // import messageList from './messageList';
 import messageForm from './messageForm';
 import messages from './messages';
-// import instanceStore from '../storage/store';
-// import createObj from '../storage/createObj';
-import action from '../actions/action';
 
-export default () => {
+
+export default (action) => {
   const template = document.getElementById('tmp1').content.cloneNode(true);
-  const output = template.getElementById('output');
-  // if (instanceStore.get() !== null) {
-  //   output.append(instanceStore.get().message);
-  // }
-  const formElement = template.getElementById('form');
+  messages(template);
   messageForm({
-    element: formElement,
+    element: template,
     onSubmit: () => {
       action();
-      // instanceStore.set(createObj('1', formElement.getElementsByTagName('textarea')[0].value));
-      // formElement.getElementsByTagName('textarea')[0].value = '';
-      messages(output);
     },
   });
-  template.append(output);
-  template.append(formElement);
   return template;
 
 
@@ -45,4 +34,3 @@ export default () => {
   //   messageForm.get().value = '';
   // });
 };
-

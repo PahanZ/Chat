@@ -2,17 +2,21 @@
 import getDate from '../storage/getDate';
 import instanceStore from '../storage/store';
 
-export default (output) => {
-  const wrap = document.createElement('div');
-  wrap.className = 'newMessage';
-  const messageDiv = document.createElement('div');
-  messageDiv.className = 'messageDiv';
-  messageDiv.textContent = instanceStore.get().message;
-  wrap.append(messageDiv);
-  const dateDiv = document.createElement('div');
-  dateDiv.textContent = getDate(instanceStore.get().date);
-  wrap.append(dateDiv);
-  output.append(wrap);
+export default (element) => {
+  if (instanceStore.get() !== null) {
+    const output = element.getElementById('output');
+    const wrap = document.createElement('div');
+    const messageDiv = document.createElement('div');
+    const dateDiv = document.createElement('div');
+    wrap.className = 'newMessage';
+    messageDiv.className = 'messageDiv';
+    messageDiv.textContent = instanceStore.get().message;
+    wrap.append(messageDiv);
+    dateDiv.textContent = getDate(instanceStore.get().date);
+    wrap.append(dateDiv);
+    output.append(wrap);
+    element.append(output);
+  }
 };
 
 

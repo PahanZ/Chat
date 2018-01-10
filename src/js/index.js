@@ -2,14 +2,15 @@ import '../style.scss';
 // import sentMessage from './actions/action';
 import chat from './components/chat';
 import instanceStore from './storage/store';
+import action from './actions/action';
 
 const wrap = document.getElementsByClassName('wrapp')[0];
 instanceStore.subscribe(() => {
-  chat();
+  chat(action);
 });
 wrap.innerHTML = null;
-wrap.append(chat());
-// console.log(chat(sentMessage()));
+wrap.append(chat(action));
+console.log(chat(action));
 
 
 // import { chat } from './components/chat';
