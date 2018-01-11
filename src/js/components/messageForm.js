@@ -1,13 +1,9 @@
-// import messages from './messages';
-
 const messageForm = ({ element, onSubmit }) => {
   const form = element.getElementById('form');
-  // const output = element.getElementById('output');
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     onSubmit();
   });
-  // messages(output);
   element.append(form);
 };
 

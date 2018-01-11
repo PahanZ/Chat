@@ -1,11 +1,14 @@
-// import messageList from './messageList';
 import messageForm from './messageForm';
 import messages from './messages';
+import instanceStore from '../storage/store';
+import correctDate from '../storage/getDate';
 
 
 export default (action) => {
+  const wrap = document.getElementsByClassName('wrapp')[0];
+  wrap.innerHTML = null;
   const template = document.getElementById('tmp1').content.cloneNode(true);
-  messages(template);
+  messages(template, instanceStore, correctDate);
   messageForm({
     element: template,
     onSubmit: () => {

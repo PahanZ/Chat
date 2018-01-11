@@ -3,13 +3,13 @@ import Observer from './observer';
 class Store extends Observer {
   constructor() {
     super();
-    this.state = null;
+    this.state = [];
   }
   get() {
     return this.state;
   }
   set(value) {
-    this.state = value;
+    this.state.push(value);
     this.emit(this);
   }
 }
