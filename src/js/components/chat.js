@@ -2,6 +2,7 @@ import messageForm from './messageForm';
 import messages from './messages';
 import instanceStore from '../storage/store';
 import correctDate from '../storage/getDate';
+import message from './message';
 
 
 export default (action) => {
@@ -15,6 +16,7 @@ export default (action) => {
       action();
     },
   });
+  message(wrap, instanceStore, 'somth');
   return template;
 
 

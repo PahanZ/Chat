@@ -1,21 +1,19 @@
-// import { getFromStorage, getStore } from '../API/getMessages';
-
 export default (element, store, correctDate) => {
-  if (store.get() !== []) {
-    Array.prototype.forEach.call(store.get(), (item) => {
-      const output = element.getElementById('output');
-      const wrap = document.createElement('div');
-      const messageDiv = document.createElement('div');
-      const dateDiv = document.createElement('div');
-      wrap.className = 'newMessage';
-      messageDiv.className = 'messageDiv';
-      messageDiv.textContent = item.message;
-      wrap.append(messageDiv);
-      dateDiv.textContent = correctDate(item.date);
-      wrap.append(dateDiv);
-      output.append(wrap);
-    });
-  }
+  // if (store.get().length > 1) {
+  Array.prototype.forEach.call(store.get(), (item) => {
+    const output = element.getElementById('output');
+    const wrap = document.createElement('div');
+    const messageDiv = document.createElement('div');
+    const dateDiv = document.createElement('div');
+    wrap.className = 'newMessage';
+    messageDiv.className = 'messageDiv';
+    messageDiv.textContent = item.message;
+    wrap.append(messageDiv);
+    dateDiv.textContent = correctDate(item.date);
+    wrap.append(dateDiv);
+    output.append(wrap);
+  });
+  // }
 };
 
 
