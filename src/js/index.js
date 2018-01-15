@@ -20,12 +20,4 @@ InstanceStore.subscribe(() => {
     }),
   ));
 });
-body.prepend(Chat(
-  sentMessage, store, correctDate,
-  Messages(Message, store, correctDate),
-  MessageForm({
-    onSubmit: () => {
-      sentMessage();
-    },
-  }),
-));
+InstanceStore.firstRender();

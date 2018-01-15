@@ -12,6 +12,9 @@ class Store extends Observer {
     this.state.push(value);
     this.emit(this);
   }
+  firstRender() {
+    this.emit(this);
+  }
 }
 
 const instanceStore = new Store();
