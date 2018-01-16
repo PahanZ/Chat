@@ -20,4 +20,4 @@ InstanceStore.subscribe(() => {
     }),
   ));
 });
-InstanceStore.firstRender();
+InstanceStore.emit();
