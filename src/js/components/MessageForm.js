@@ -3,7 +3,9 @@ export default ({ onSubmit }) => {
   const form = tmp.getElementById('form');
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    onSubmit();
+    const message = form.children[1];
+    console.log(message.value);
+    onSubmit(message);
   });
   return tmp;
 };

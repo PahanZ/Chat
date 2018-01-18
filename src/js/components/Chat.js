@@ -3,13 +3,14 @@ import Message from './Message';
 import MessageForm from './MessageForm';
 
 export default ({ sentMessage, store, correctDate }) => {
-  const wrap = document.getElementsByClassName('wrapp')[0];
-  wrap.innerHTML = null;
+  const tmp = document.getElementById('tmpWrap').content.cloneNode(true);
+  const wrap = tmp.getElementById('wrapp');
   wrap.append(Messages(Message, store, correctDate));
   wrap.append(MessageForm({
     onSubmit: () => {
       sentMessage();
     },
   }));
-  return wrap;
+  tmp.append(wrap);
+  return tmp;
 };

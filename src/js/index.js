@@ -5,9 +5,11 @@ import sentMessage from './actions/sentMessage';
 import correctDate from './storage/correctDate';
 
 
-const body = document.getElementsByTagName('body')[0];
+const app = document.getElementById('app');
 const store = InstanceStore.get();
 InstanceStore.subscribe(() => {
-  body.prepend(Chat({ sentMessage, store, correctDate }));
+  app.innerHTML = null;
+  app.prepend(Chat({ sentMessage, store, correctDate }));
 });
 InstanceStore.emit();
+
