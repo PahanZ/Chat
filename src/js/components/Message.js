@@ -1,4 +1,4 @@
-export default (content, correctDate) => {
+export default ({ content, correctDate }) => {
   const wrap = document.createElement('div');
   const messageDiv = document.createElement('div');
   const dateDiv = document.createElement('div');
