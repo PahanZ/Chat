@@ -1,11 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-const config = {
-  devtool: 'eval',
+module.exports = {
+  devtool: 'source-map',
   entry: './src/js/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -33,12 +31,8 @@ const config = {
     ],
   },
   plugins: [
-    // new webpack.optimize.UglifyJsPlugin(),
-    // new UglifyJsPlugin(),
     new ExtractTextPlugin('./css/style.css'),
     new HtmlWebpackPlugin({ template: './src/index.html' }),
   ],
 };
 
-
-module.exports = config;

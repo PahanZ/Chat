@@ -18,6 +18,13 @@ body {
       background-color: #fff;
       height: 85%;
       overflow: scroll; }
+      body .wrapp #output .newMessage {
+        width: 100%;
+        display: flex;
+        justify-content: space-around; }
+        body .wrapp #output .newMessage .messageDiv {
+          flex-basis: 60%;
+          text-align: center; }
     body .wrapp #form {
       display: flex;
       flex-direction: column;
@@ -28,9 +35,10 @@ body {
         border-radius: 5px;
         border: none;
         cursor: pointer;
-        margin: 25px; }
+        margin: 25px;
+        height: 50px; }
       body .wrapp #form textarea {
         width: 75%;
-        height: 10vh; }
+        height: 100px; }
       body .wrapp #form label {
         padding: 15px; }
